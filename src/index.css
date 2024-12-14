@@ -1,0 +1,44 @@
+/* 1. Import Tailwind CSS Base Styles */
+@tailwind base;
+
+/* 2. Import Tailwind CSS Component Styles */
+@tailwind components;
+
+/* 3. Import Tailwind CSS Utility Styles */
+@tailwind utilities;
+
+/* 4. Global Reset Styles (Optional for Consistency) */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif; /* Change to your preferred font */
+  background-color: #f8f9fa; /* Soft light gray background for consistency */
+  color: #212529; /* Neutral dark text color */
+}
+
+/* 5. Basic Styling for Flexbox Containers */
+.flex {
+  display: flex;
+}
+.h-screen {
+  height: 100vh;
+}
+
+/* 6. Custom Classes (if needed) */
+.text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+  color: #9ca3af; /* Tailwind's gray-400 equivalent */
+}
+
+button {
+  cursor: pointer;
+}
