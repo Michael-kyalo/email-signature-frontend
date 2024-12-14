@@ -37,8 +37,8 @@ const CreateSignatureModal = ({ onClose }) => {
 
     try {
       await axiosInstance.post("/signature", { template_data: formData });
-      onClose();
       alert("Signature created successfully!");
+      onClose(); // Close the modal
     } catch (err) {
       setError(err.response?.data?.error || "Failed to create signature.");
     } finally {
@@ -47,13 +47,16 @@ const CreateSignatureModal = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-1/2">
-        <h2 className="text-xl font-bold mb-4">Create New Signature</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4 sm:px-0">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/3">
+        <h2 className="text-xl font-bold mb-6 text-center sm:text-left">
+          Create New Signature
+        </h2>
 
         {error && <div className="text-red-500 mb-4">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input
@@ -66,6 +69,7 @@ const CreateSignatureModal = ({ onClose }) => {
             />
           </div>
 
+          {/* Job Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Job Title</label>
             <input
@@ -78,6 +82,7 @@ const CreateSignatureModal = ({ onClose }) => {
             />
           </div>
 
+          {/* Company */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Company</label>
             <input
@@ -90,10 +95,11 @@ const CreateSignatureModal = ({ onClose }) => {
             />
           </div>
 
+          {/* Phone */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Phone</label>
             <input
-              type="text"
+              type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
@@ -102,50 +108,61 @@ const CreateSignatureModal = ({ onClose }) => {
             />
           </div>
 
+          {/* Website */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Website</label>
             <input
-              type="text"
+              type="url"
               name="website"
               value={formData.website}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg p-2"
+              placeholder="https://example.com"
+              required
             />
           </div>
 
+          {/* Social Links */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">LinkedIn</label>
+            <label className="block text-sm font-medium text-gray-700">
+              LinkedIn Profile
+            </label>
             <input
-              type="text"
+              type="url"
               name="social_links.linkedin"
               value={formData.social_links.linkedin}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg p-2"
+              placeholder="https://linkedin.com/in/your-profile"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700">Twitter</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Twitter Profile
+            </label>
             <input
-              type="text"
+              type="url"
               name="social_links.twitter"
               value={formData.social_links.twitter}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-lg p-2"
+              placeholder="https://twitter.com/your-profile"
             />
           </div>
 
-          <div className="flex justify-end space-x-4">
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row justify-end space-y-4 sm:space-y-0 sm:space-x-4">
             <button
               type="button"
               onClick={onClose}
-              className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
+              className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition w-full sm:w-auto"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className={`px-4 py-2 rounded text-white ${
+              className={`px-4 py-2 rounded text-white w-full sm:w-auto ${
                 isLoading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
               }`}
               disabled={isLoading}

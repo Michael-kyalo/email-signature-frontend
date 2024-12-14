@@ -37,9 +37,9 @@ const Register = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
       {/* Left Panel */}
-      <div className="w-1/2 bg-gray-900 text-white flex flex-col justify-center items-center p-8">
+      <div className="w-full md:w-1/2 bg-gray-900 text-white flex flex-col justify-center items-center p-8">
         <div className="max-w-sm text-center">
           <h2 className="text-4xl font-bold mb-6">Join Our Community</h2>
           <p className="text-lg mb-6">
@@ -54,8 +54,11 @@ const Register = () => {
       </div>
 
       {/* Right Panel */}
-      <div className="w-1/2 flex justify-center items-center">
-        <form onSubmit={handleRegister} className="bg-white shadow-lg rounded-lg p-10 w-3/4 max-w-md">
+      <div className="w-full md:w-1/2 flex justify-center items-center p-6">
+        <form
+          onSubmit={handleRegister}
+          className="bg-white shadow-lg rounded-lg p-8 sm:p-10 w-full max-w-md"
+        >
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-800">Create an Account</h1>
             <p className="text-gray-500">Sign up to get started</p>
@@ -68,6 +71,7 @@ const Register = () => {
             </div>
           )}
 
+          {/* First Name */}
           <div className="mb-4">
             <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
               First Name
@@ -83,6 +87,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Last Name */}
           <div className="mb-4">
             <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
               Last Name
@@ -98,6 +103,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Email */}
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               Email
@@ -113,6 +119,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Password */}
           <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
@@ -128,6 +135,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Confirm Password */}
           <div className="mb-6">
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
               Confirm Password
@@ -143,6 +151,7 @@ const Register = () => {
             />
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             className={`w-full py-3 rounded-lg font-semibold transition ${
